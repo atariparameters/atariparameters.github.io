@@ -1,0 +1,483 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Title">
+    <meta name="keywords" content="Vision,recurrence,RNN">
+    <title>Title</title>
+    <link rel="stylesheet" href="atari_files/main.css">
+    <style type="text/css">
+    .layered-paper-big {
+        /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+        box-shadow:
+            0px 0px 1px 1px rgba(0, 0, 0, 0.35),
+            /* The top layer shadow */
+            5px 5px 0 0px #fff,
+            /* The second layer */
+            5px 5px 1px 1px rgba(0, 0, 0, 0.35),
+            /* The second layer shadow */
+            10px 10px 0 0px #fff,
+            /* The third layer */
+            10px 10px 1px 1px rgba(0, 0, 0, 0.35),
+            /* The third layer shadow */
+            15px 15px 0 0px #fff,
+            /* The fourth layer */
+            15px 15px 1px 1px rgba(0, 0, 0, 0.35),
+            /* The fourth layer shadow */
+            20px 20px 0 0px #fff,
+            /* The fifth layer */
+            20px 20px 1px 1px rgba(0, 0, 0, 0.35),
+            /* The fifth layer shadow */
+            25px 25px 0 0px #fff,
+            /* The fifth layer */
+            25px 25px 1px 1px rgba(0, 0, 0, 0.35);
+        /* The fifth layer shadow */
+        margin-left: 10px;
+        margin-right: 45px;
+    }
+    </style>
+    <style id="style-1-cropbar-clipper">
+    /* Copyright 2014 Evernote Corporation. All rights reserved. */
+    .en-markup-crop-options {
+        top: 18px !important;
+        left: 50% !important;
+        margin-left: -100px !important;
+        width: 200px !important;
+        border: 2px rgba(255, 255, 255, .38) solid !important;
+        border-radius: 4px !important;
+    }
+
+    .auth-name {
+        color: #0040BF;
+    }
+
+    .email {
+        color: #0040BF;
+    }
+
+    .rowimg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .columnimg {
+        display: inline-block;
+        padding: 5px;
+        margin: 10px;
+
+    }
+
+    .masonry-ite {
+        margin-bottom: 10px;
+        width: 20%;
+
+    }
+
+    .masonry-cont {
+        margin: 0 auto;
+    }
+
+    .en-markup-crop-options div div:first-of-type {
+        margin-left: 0px !important;
+    }
+    </style>
+</head>
+
+<body data-gr-c-s-loaded="true">
+    <div class="outercontainer">
+        <div class="container">
+            <div class="content project_title">
+                <h1>Title</h1>
+            </div>
+            <div class="content project_headline">
+                <center>
+                    <h2>
+                        <div style="justify-content: center;">
+                            <div align="center" style="display: inline-block; margin: 10px">
+                                <div class="auth-name">Author*</div>
+                                <div style="font-size:15px">Affiliation</div>
+                                <div style="font-size:15px;">
+                                    <a style="color:0040BF" href="mailto:author@a.com">author@a.com</a>
+                                </div>
+                            </div>
+                            <div align="center" style="display: inline-block; margin: 10px">
+                                <div class="auth-name">Author*</div>
+                                <div style="font-size:15px">Affiliation</div>
+                                <div style="font-size:15px;">
+                                    <a style="color:0040BF" href="mailto:author@a.com">author@a.com</a>
+                                </div>
+                            </div>
+                            <div align="center" style="display: inline-block; margin: 10px">
+                                <div class="auth-name">Author*</div>
+                                <div style="font-size:15px">Affiliation</div>
+                                <div style="font-size:15px;">
+                                    <a style="color:0040BF" href="mailto:author@a.com">author@a.com</a>
+                                </div>
+                            </div>
+                            <div align="center" style="display: inline-block; margin: 10px">
+                                <div class="auth-name">Author</div>
+                                <div style="font-size:15px">Affiliation</div>
+                                <div style="font-size:15px;">
+                                    <a style="color:0040BF" href="mailto:author@a.com">author@a.com</a>
+                                </div>
+                            </div>
+                            <div align="center" style="display: inline-block; margin: 10px">
+                                <div class="auth-name">Author</div>
+                                <div style="font-size:15px">Affiliation</div>
+                                <div style="font-size:15px;">
+                                    <a style="color:0040BF" href="mailto:author@a.com">author@a.com</a>
+                                </div>
+                            </div>
+                    </div></h2>
+                </center>
+            </div>
+            <div class="content project_headline">
+                <center>
+                    <h2>
+                        <table width="100%" align="center">
+                            <tbody>
+                                <tr>
+                                    <!--                                     <td width="150px" align="center">
+                                        <center>
+                                            <span style="font-size:18px"></span>
+                                        </center>
+                                    </td> -->
+                                    <td width="200px" align="center">
+                                        <center>
+                                            <span style="font-size:18px">Code <a style="color:0040BF" href="https://github.com/"> [GitHub]</a></span>
+                                        </center>
+                                    </td>
+                                    <td width="200px" align="center">
+                                        <center>
+                                            <span style="font-size:18px">arXiv 2021 <a style="color:0040BF" href="https://arxiv.org/"> [Paper]</a></span>
+                                        </center>
+                                    </td>
+                                    <!--                                     <td width="150px" align="center">
+                                        <center>
+                                            <span style="font-size:18px"></span>
+                                        </center>
+                                    </td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </h2>
+                </center>
+            </div>
+            <div class="content project_headline">
+                <div class="img" style="text-align:center">
+                    <img class="img_responsive" src="atari_files/game_configs.PNG" alt="Teaser" style="margin:auto;max-width:40%">
+                </div>
+                <div class="text">
+                    <p style="font-size:12px;padding-left:20px;padding-right:20px"><b>Figure 1:</b> Key game modifications and parameters. Boss projectiles can be set to vary in speed individually (a), as can agent projectiles (b), illustrated by the intensity of the arrow vectors. Trails behind the boss' projectiles can be rendered (c) or not rendered (d). (e) Sections of the game can be covered with blocks of static, masking objects underneath them. (f) The game's color can be inverted.</p>
+                </div>
+            </div>
+            <div class="content">
+                <div class="text" style="font-size:18px;padding-left:10px;padding-right:10px">
+                    <h3>Abstract</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+            </div>
+            <div class="content">
+                <div class="text" style="font-size:18px;padding-left:5px;padding-right:5px">
+                    <h3>Contributions</h3>
+                    <div class="text">
+                        <p><b> (1) </b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </div>
+                    <div class="text">
+                        <p><b> (2) </b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </div>
+                    <div>
+                        <div class="text">
+                            <p><b> (3) </b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            <div class="img" style="text-align:center">
+                                <img class="img_responsive" src="atari_files/graph.PNG" alt="Teaser" style="margin:auto;max-width:70%">
+                            </div>
+                            <div class="text">
+                                <p style="font-size:12px;padding-left:20px;padding-right:20px"><b>Figure 2:</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="text">
+                            <p><b> (4) </b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            <div class="img" style="text-align:center">
+                                <img class="img_responsive" src="atari_files/bubbles.PNG" alt="Teaser" style="margin:auto;max-width:55%">
+                            </div>
+                            <div class="text">
+                                <p style="font-size:12px;padding-left:20px;padding-right:20px"><b>Figure 3:</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="text">
+                    <h3>Agent attention</h3>
+                </div>
+            </div>
+            <div class="rowimg" style="padding-left:5px;padding-right:5px">
+                <figure class="columnimg">
+                    <img src="atari_files/gif0_long.gif" alt="nopenalty" style="">
+                    <figcaption style="font-size:12px;text-align: center;">Agent attention playing on<br> the default game configuration.</figcaption>
+                </figure>
+                <figure class="columnimg">
+                    <img src="atari_files/0.gif" alt="penalty" style="">
+                    <figcaption style="font-size:12px;text-align: center">Agent attention playing on<br> a partially camouflaged game.</figcaption>
+                </figure>
+            </div>
+            <div class="content">
+                <div class="text">
+                    <h3>Gameplay configurations</h3>
+                </div>
+            </div>
+            <!--             <div id="masonry" class="masonry-cont">
+                <img class="masonry-ite" src="atari_files/11051.gif" alt="cocogif">
+                <img class="masonry-ite" src="atari_files/457559.gif" alt="cocogif">
+                <img class="masonry-ite" src="atari_files/51610.gif" alt="cocogif">
+                <img class="masonry-ite" src="atari_files/70739.gif" alt="cocogif">
+                <img class="masonry-ite" src="atari_files/96549.gif" alt="cocogif">
+                <img class="masonry-ite" src="atari_files/125405.gif" alt="cocogif">
+                <img class="masonry-ite" src="atari_files/237118.gif" alt="cocogif">
+                <img class="masonry-ite" src="atari_files/257370.gif" alt="cocogif">
+                <img class="masonry-ite" src="atari_files/304560.gif" alt="cocogif">
+                <img class="masonry-ite" src="atari_files/337055.gif" alt="cocogif">
+                <img class="masonry-ite" src="atari_files/342971.gif" alt="cocogif">
+                <img class="masonry-ite" src="atari_files/350405.gif" alt="cocogif">
+                <img class="masonry-ite" src="atari_files/431848.gif" alt="cocogif">
+                <img class="masonry-ite" src="atari_files/474078.gif" alt="cocogif">
+                <img class="masonry-ite" src="atari_files/535523.gif" alt="cocogif">
+                <img class="masonry-ite" src="atari_files/537053.gif" alt="cocogif">
+                <img class="masonry-ite" src="atari_files/577182.gif" alt="cocogif">
+                <img class="masonry-ite" src="atari_files/252701.gif" alt="cocogif">
+                <img class="masonry-ite" src="atari_files/367818.gif" alt="cocogif">
+                <img class="masonry-ite" src="atari_files/501005.gif" alt="cocogif">
+                <img class="masonry-ite" src="atari_files/269113.gif" alt="cocogif">
+                <img class="masonry-ite" src="atari_files/501005.gif" alt="cocogif">
+                <img class="masonry-ite" src="atari_files/551804.gif" alt="cocogif">
+            </div>
+            <script src="atari_files/masonry.pkgd.min.js"></script>
+            <script>
+            var container = document.querySelector('#masonry');
+            var masonry = new Masonry(container, {
+                columnWidth: 50,
+                itemSelector: '.masonry-ite',
+                fitWidth: true
+            });
+            </script> -->
+            <div class="slideshow-container">
+                <img class="mySlides fade gifs" src="atari_files/partial_camo.gif" alt="atarigif" style="display: block;">
+                <img class="mySlides fade gifs" src="atari_files/full_camo.gif" alt="atarigif" style="display: none;">
+                <img class="mySlides fade gifs" src="atari_files/partial_camo.gif" alt="atarigif" style="display: block;">
+                <img class="mySlides fade gifs" src="atari_files/full_camo.gif" alt="atarigif" style="display: none;">
+                <img class="mySlides fade gifs" src="atari_files/partial_camo.gif" alt="atarigif" style="display: block;">
+                <img class="mySlides fade gifs" src="atari_files/full_camo.gif" alt="atarigif" style="display: none;">
+                <img class="mySlides fade gifs" src="atari_files/partial_camo.gif" alt="atarigif" style="display: block;">
+                <img class="mySlides fade gifs" src="atari_files/full_camo.gif" alt="atarigif" style="display: none;">
+                <img class="mySlides fade gifs" src="atari_files/partial_camo.gif" alt="atarigif" style="display: block;">
+                <img class="mySlides fade gifs" src="atari_files/full_camo.gif" alt="atarigif" style="display: none;">
+                <img class="mySlides fade gifs" src="atari_files/partial_camo.gif" alt="atarigif" style="display: block;">
+                <img class="mySlides fade gifs" src="atari_files/full_camo.gif" alt="atarigif" style="display: none;">
+                <img class="mySlides fade gifs" src="atari_files/partial_camo.gif" alt="atarigif" style="display: block;">
+                <img class="mySlides fade gifs" src="atari_files/full_camo.gif" alt="atarigif" style="display: none;">
+                <img class="mySlides fade gifs" src="atari_files/partial_camo.gif" alt="atarigif" style="display: block;">
+                <img class="mySlides fade gifs" src="atari_files/full_camo.gif" alt="atarigif" style="display: none;">
+                <img class="mySlides fade gifs" src="atari_files/partial_camo.gif" alt="atarigif" style="display: block;">
+                <img class="mySlides fade gifs" src="atari_files/full_camo.gif" alt="atarigif" style="display: none;">
+                <img class="mySlides fade gifs" src="atari_files/partial_camo.gif" alt="atarigif" style="display: block;">
+                <img class="mySlides fade gifs" src="atari_files/full_camo.gif" alt="atarigif" style="display: none;">
+                <img class="mySlides fade gifs" src="atari_files/partial_camo.gif" alt="atarigif" style="display: block;">
+                <img class="mySlides fade gifs" src="atari_files/full_camo.gif" alt="atarigif" style="display: none;">
+                <img class="mySlides fade gifs" src="atari_files/partial_camo.gif" alt="atarigif" style="display: block;">
+                <a class="prev" onclick="plusSlides(-1)">?</a>
+                <a class="next" onclick="plusSlides(1)">?</a>
+            </div>
+            <div style="text-align:center">
+                <span class="dot active" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+                <span class="dot" onclick="currentSlide(6)"></span>
+                <span class="dot" onclick="currentSlide(7)"></span>
+                <span class="dot" onclick="currentSlide(8)"></span>
+                <span class="dot" onclick="currentSlide(9)"></span>
+                <span class="dot" onclick="currentSlide(10)"></span>
+                <span class="dot" onclick="currentSlide(11)"></span>
+                <span class="dot" onclick="currentSlide(12)"></span>
+                <span class="dot" onclick="currentSlide(13)"></span>
+                <span class="dot" onclick="currentSlide(14)"></span>
+                <span class="dot" onclick="currentSlide(15)"></span>
+                <span class="dot" onclick="currentSlide(16)"></span>
+                <span class="dot" onclick="currentSlide(17)"></span>
+                <span class="dot" onclick="currentSlide(18)"></span>
+                <span class="dot" onclick="currentSlide(19)"></span>
+                <span class="dot" onclick="currentSlide(20)"></span>
+                <span class="dot" onclick="currentSlide(21)"></span>
+                <span class="dot" onclick="currentSlide(22)"></span>
+                <span class="dot" onclick="currentSlide(23)"></span>
+            </div>
+            <script>
+            var slideIndex = 1;
+            showSlides(slideIndex);
+
+            function plusSlides(n) {
+                showSlides(slideIndex += n);
+            }
+
+            function currentSlide(n) {
+                showSlides(slideIndex = n);
+            }
+
+            function showSlides(n) {
+                var i;
+                var slides = document.getElementsByClassName("mySlides");
+                var dots = document.getElementsByClassName("dot");
+                if (n > slides.length) { slideIndex = 1 }
+                if (n < 1) { slideIndex = slides.length }
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                }
+                slides[slideIndex - 1].style.display = "block";
+                dots[slideIndex - 1].className += " active";
+            }
+            </script>
+            <div class="content">
+                <div class="text">
+                    <h3>Publication</h3>
+                    <ul>
+                        <li>
+                            <div class="title"><a>Title</a></div>
+                            <div>
+                                <a>Author*</a>,
+                                <a>Author*</a>,
+                                <a>Author*</a>,
+                                <a>Author</a>,
+                                <a>Author</a>
+                                (*indicates equal contribution)
+                            </div>
+                            <div>
+                                <span class="tag"><a href="https://arxiv.org/">arXiv</a></span>
+                                <span class="tag"><a href="https://github.com/">code</a></span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <br>
+                <div class="text" style="text-align:left">
+                    <table px="" width="200" align="center">
+                        <tbody>
+                            <tr>
+                                <td><a href="https://arxiv.org/"><img class="layered-paper-big" style="height:175px" src="atari_files/paper_thumb.png"></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="content">
+                <div class="text" style="margin: 30px;font-size:8px;">
+                    <p>Website adapted from https://people.csail.mit.edu/yuewang/projects/rfs/
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="download_plus_animation"></div>
+
+
+
+</body></html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Title">
+    <meta name="keywords" content="Vision,recurrence,RNN">
+    <title>Title</title>
+    <link rel="stylesheet" href="atari_files/main.css">
+    <style type="text/css">
+    .layered-paper-big {
+        /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+        box-shadow:
+            0px 0px 1px 1px rgba(0, 0, 0, 0.35),
+            /* The top layer shadow */
+            5px 5px 0 0px #fff,
+            /* The second layer */
+            5px 5px 1px 1px rgba(0, 0, 0, 0.35),
+            /* The second layer shadow */
+            10px 10px 0 0px #fff,
+            /* The third layer */
+            10px 10px 1px 1px rgba(0, 0, 0, 0.35),
+            /* The third layer shadow */
+            15px 15px 0 0px #fff,
+            /* The fourth layer */
+            15px 15px 1px 1px rgba(0, 0, 0, 0.35),
+            /* The fourth layer shadow */
+            20px 20px 0 0px #fff,
+            /* The fifth layer */
+            20px 20px 1px 1px rgba(0, 0, 0, 0.35),
+            /* The fifth layer shadow */
+            25px 25px 0 0px #fff,
+            /* The fifth layer */
+            25px 25px 1px 1px rgba(0, 0, 0, 0.35);
+        /* The fifth layer shadow */
+        margin-left: 10px;
+        margin-right: 45px;
+    }
+    </style>
+    <style id="style-1-cropbar-clipper">
+    /* Copyright 2014 Evernote Corporation. All rights reserved. */
+    .en-markup-crop-options {
+        top: 18px !important;
+        left: 50% !important;
+        margin-left: -100px !important;
+        width: 200px !important;
+        border: 2px rgba(255, 255, 255, .38) solid !important;
+        border-radius: 4px !important;
+    }
+
+    .auth-name {
+        color: 0040BF;
+    }
+
+    .email {
+        color: 0040BF;
+    }
+
+    .rowimg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .columnimg {
+        display: inline-block;
+        padding: 5px;
+        margin: 10px;
+
+    }
+
+    .masonry-ite {
+        margin-bottom: 10px;
+        width: 20%;
+
+    }
+
+    .masonry-cont {
+        margin: 0 auto;
+    }
+
+    .en-markup-crop-options div div:first-of-type {
+        margin-left: 0px !important;
+    }
+    </style>
+</head>
+
+</body>
